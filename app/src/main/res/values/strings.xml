@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TodoList</string>
+    <string name="urgent">Urgent</string>
+    <string name="hint_input_todo">Input a todo</string>
+    <string name="text_button_add">Add</string>
+    <string name="title_textView">TODO LIST</string>
+</resources>
