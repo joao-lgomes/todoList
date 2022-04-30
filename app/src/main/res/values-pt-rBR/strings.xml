@@ -5,4 +5,6 @@
     <string name="hint_input_todo">Escreva a tarefa</string>
     <string name="text_button_add">adicionar</string>
     <string name="title_textView">LISTA DE TAREFAS</string>
+    <string name="todoTextView">Uma tarefa que preciso fazer</string>
+    <string name="todoStringCheckBox">Finalizada</string>
 </resources>

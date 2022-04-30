@@ -4,4 +4,6 @@
     <string name="hint_input_todo">Input a todo</string>
     <string name="text_button_add">Add</string>
     <string name="title_textView">TODO LIST</string>
+    <string name="todoTextView">A task I need to do</string>
+    <string name="todoStringCheckBox">Done</string>
 </resources>
