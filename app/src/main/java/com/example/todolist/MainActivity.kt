@@ -34,6 +34,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         this.todoAdapter = todoAdapter(this.todos)
+        this.todoAdapter.setOnCheckedChangeListenner{ todo, bool ->
+            todo.isDone = bool
+        }
+
         this.rvTodoList.layoutManager = LinearLayoutManager(this)
         this.rvTodoList.adapter = this.todoAdapter
     }
@@ -51,6 +55,7 @@ class MainActivity : AppCompatActivity() {
                 false)
             this.todos.add(todo)
             this.todoAdapter.notifyItemInserted(this.todos.size-1)
+            this.rvTodoList.scrollToPosition(this.todos.size-1)
             this.eTxtInput.text.clear()
         }
     }

@@ -6,7 +6,7 @@ import android.os.Parcelable
 class todo(
     val text: String,
     val isUrgent: Boolean,
-    val isDone: Boolean
+    var isDone: Boolean
 ): Parcelable {
 
     constructor(parcel: Parcel) : this(
