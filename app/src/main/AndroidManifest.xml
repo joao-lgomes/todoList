@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TodoList">
         <activity
+            android:name="com.example.composeTodoList.composeTodoList"
+            android:exported="false"
+            android:label="@string/title_activity_compose_todo_list"
+            android:theme="@style/Theme.TodoList" />
+        <activity
+            android:name="com.example.composetodolist"
+            android:exported="false"
+            android:label="@string/title_activity_composetodolist"
+            android:theme="@style/Theme.TodoList" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

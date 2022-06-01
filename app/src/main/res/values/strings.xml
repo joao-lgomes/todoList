@@ -6,4 +6,6 @@
     <string name="title_textView">TODO LIST</string>
     <string name="todoTextView">A task I need to do</string>
     <string name="todoStringCheckBox">Done</string>
+    <string name="title_activity_composetodolist">composetodolist</string>
+    <string name="title_activity_compose_todo_list">composeTodoList</string>
 </resources>
