@@ -59,7 +59,6 @@ class todoRequest(context: Context) {
     }
 
     fun addNewTodo(todo: Todo) {
-        Log.d("RequestStatus", "FazendoPOST")
 
         val jsonObject = JSONObject()
         jsonObject.put("description", todo.text)
@@ -72,7 +71,6 @@ class todoRequest(context: Context) {
             URL + POST_TODO,
             jsonObject,
             { response ->
-                Log.d("RequestPOSTResponse", response.toString())
                 todosRequest()
             },
             { volleyError ->
@@ -81,14 +79,5 @@ class todoRequest(context: Context) {
         )
 
         this.queue.add(jsonArrayRequest);
-    }
-
-    fun todoToJSONObject(todo: Todo): JSONObject {
-        val jsonObject = JSONObject();
-        jsonObject.put("description",todo.text);
-        jsonObject.put("isUrgent",todo.isUrgent);
-        jsonObject.put("isDone",todo.isDone);
-        Log.d("todoToJson", "$jsonObject")
-        return jsonObject;
     }
 }

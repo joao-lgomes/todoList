@@ -1,6 +1,5 @@
 package br.pro.viniciusfm.funnymoviesapp.ui.components.frames
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -26,23 +25,22 @@ import kotlinx.coroutines.launch
 @Composable
 fun MainScreen(todoRequest: todoRequest) {
     var switchIsUrgentValue = remember { mutableStateOf(false) }
-    var textFieldText = remember { mutableStateOf(TextFieldValue("")) }
+
     val listState = rememberLazyListState()
+    var textFieldText = remember { mutableStateOf(TextFieldValue("")) }
+
     Scaffold(
         modifier =
         Modifier
             .fillMaxSize()
             .background(color = MaterialTheme.colors.background),
-        // bottomBar = {
-        //    columnAddNewTodo(Modifier.height(200.dp))
-        //}
 
     ) { innerPadding ->
         Box(
             modifier = Modifier.padding(innerPadding).fillMaxSize()
         ) {
             Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
-                LazyColumn (modifier = Modifier.fillMaxHeight(0.7f),state = listState) {
+                LazyColumn (modifier = Modifier.fillMaxHeight(0.6f),state = listState) {
                     items(todoSingleton.getTodos()) { todo ->
                         todoItemView(todo = todo)
                     }
@@ -78,7 +76,7 @@ fun MainScreen(todoRequest: todoRequest) {
                         TextField(
                             value = textFieldText.value,
                             onValueChange = { newValue -> textFieldText.value = newValue },
-                            Modifier.fillMaxWidth(),
+                            Modifier.fillMaxWidth().fillMaxHeight(),
                             textStyle = TextStyle(color = MaterialTheme.colors.primary),
                             placeholder = { Text("Descreva a Tarefa...") },
                         )
@@ -89,9 +87,8 @@ fun MainScreen(todoRequest: todoRequest) {
                     //BUTTON ROW
                     Row(Modifier.fillMaxWidth().height(50.dp), verticalAlignment = Alignment.CenterVertically) {
                         Button(
-                            modifier = Modifier.fillMaxWidth().height(50.dp),
+                            modifier = Modifier.fillMaxWidth().fillMaxHeight(0.7f),
                             onClick = {
-                                //Log.d("button","click")
                                 todoRequest.addNewTodo(Todo(text = textFieldText.value.text, isUrgent = switchIsUrgentValue.value, isDone = false),);
                                 textFieldText.value = TextFieldValue("")
                             },
@@ -110,61 +107,6 @@ fun MainScreen(todoRequest: todoRequest) {
                 //TextFieldRow(textFieldText)
                 //buttonRow(switchIsUrgentValue, textFieldText, todoRequest)
             }
-        }
-    }
-}
-
-
-@Composable
-fun columnAddNewTodo(switchIsUrgentValue:  MutableState<Boolean>, textFieldText:  MutableState<TextFieldValue>, todoRequest: todoRequest, modifier: Modifier = Modifier){
-    Column(modifier = Modifier.padding(start = 15.dp, end = 15.dp, top = 10.dp, bottom = 3.dp), verticalArrangement = Arrangement.SpaceBetween) {
-        switchRow(switchIsUrgentValue)
-        TextFieldRow(textFieldText)
-        buttonRow(switchIsUrgentValue, textFieldText, todoRequest)
-    }
-}
-
-@Composable
-fun switchRow(switchIsUrgentValue:  MutableState<Boolean>, modifier: Modifier = Modifier){
-
-    Row() {
-        Text(
-            "Urgente",
-            modifier = Modifier.align(alignment = Alignment.CenterVertically),
-        )
-        Switch(
-            checked = switchIsUrgentValue.value,
-            onCheckedChange = {
-                switchIsUrgentValue.value = !switchIsUrgentValue.value;
-            },
-        )
-    }
-}
-
-@Composable
-fun TextFieldRow(textFieldText:  MutableState<TextFieldValue>, modifier: Modifier = Modifier){
-    Row(Modifier.fillMaxWidth().padding(top = 10.dp)) {
-        TextField(
-            value = textFieldText.value,
-            onValueChange = { newValue -> textFieldText.value = newValue },
-            Modifier.fillMaxWidth(),
-            placeholder = { Text("Descreva a Tarefa...") },
-        )
-    }
-}
-
-@Composable
-fun buttonRow(switchIsUrgentValue:  MutableState<Boolean>, textFieldText:  MutableState<TextFieldValue>, todoRequest: todoRequest, modifier: Modifier = Modifier){
-    Row(Modifier.fillMaxWidth().height(50.dp), verticalAlignment = Alignment.CenterVertically) {
-        Button(
-            modifier = Modifier.fillMaxWidth().height(40.dp),
-            onClick = {
-                //Log.d("button","click")
-                todoRequest.addNewTodo(Todo(0,textFieldText.value.text, switchIsUrgentValue.value, false),);
-                textFieldText.value = TextFieldValue("")
-            },
-        ) {
-            Text("Salvar Tarefa")
         }
     }
 }
