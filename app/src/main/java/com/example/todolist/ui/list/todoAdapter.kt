@@ -3,7 +3,7 @@ package com.example.todolist.ui.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todolist.R
+import com.example.todoListCompose.R
 import com.example.todolist.model.todo
 
 class todoAdapter(

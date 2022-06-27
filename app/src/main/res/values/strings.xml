@@ -8,4 +8,7 @@
     <string name="todoStringCheckBox">Done</string>
     <string name="title_activity_composetodolist">composetodolist</string>
     <string name="title_activity_compose_todo_list">composeTodoList</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main_screen">MainScreen</string>
+    <string name="title_activity_todo_list_compose">TodoListCompose</string>
 </resources>

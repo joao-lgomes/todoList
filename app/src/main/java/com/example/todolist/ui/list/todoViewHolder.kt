@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todolist.R
+import com.example.todoListCompose.R
 import com.example.todolist.model.todo
 
 class todoViewHolder(

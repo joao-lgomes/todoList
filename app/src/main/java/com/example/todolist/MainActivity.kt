@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Switch
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todoListCompose.R
 import com.example.todolist.model.todo
 import com.example.todolist.ui.list.todoAdapter
 

@@ -1,4 +1,4 @@
-package com.example.composeTodoList.ui.theme
+package com.example.todoListCompose.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
