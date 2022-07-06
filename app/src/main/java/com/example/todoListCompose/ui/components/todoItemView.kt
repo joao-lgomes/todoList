@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.composeTodoList.data.todoRequest
 import com.example.composeTodoList.model.Todo
+import androidx.compose.runtime.*
 import com.example.todoListCompose.ui.theme.white
 
 @Composable
@@ -29,13 +30,14 @@ fun todoItemView(todo: Todo, todoRequest: todoRequest){
     var maxlines = remember { mutableStateOf(1) };
 
     var todoIsDone by remember {
-        mutableStateOf(todo.isDone)
+        mutableStateOf(false)
     }
 
     val openDialog = remember {
         mutableStateOf(false)
     }
 
+    todoIsDone = todo.isDone
     if(openDialog.value){
         alertDialog(todo, openDialog, todoRequest)
     }
