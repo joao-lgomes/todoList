@@ -41,13 +41,16 @@ fun MainScreen(todoRequest: todoRequest) {
         ) {
             Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
                 LazyColumn (modifier = Modifier.fillMaxHeight(0.6f),state = listState) {
-                    items(todoSingleton.getTodos()) { todo ->
-                        todoItemView(todo = todo)
+                    var getTodos = todoSingleton.getTodos();
+                    items(getTodos) { todo ->
+                        todoItemView(todo = todo, todoRequest)
                     }
                 }
 
 
-                Column(modifier = Modifier.padding(start = 15.dp, end = 15.dp, top = 10.dp, bottom = 3.dp), verticalArrangement = Arrangement.Bottom) {
+                Column(modifier = Modifier.padding(
+                    start = 15.dp, end = 15.dp, top = 10.dp, bottom = 3.dp), verticalArrangement = Arrangement.Bottom
+                ) {
 
                     // SWITCH ROW
                     Row(verticalAlignment = Alignment.Bottom) {

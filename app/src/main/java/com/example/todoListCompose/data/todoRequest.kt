@@ -18,6 +18,8 @@ class todoRequest(context: Context) {
         private val URL = "http://10.0.2.2:8000"
         private val GET_TODOS = "/tasks"
         private val POST_TODO = "/tasks/new"
+        private val UPDATE_TODO = "/tasks/done"
+        private val DELETE_TODO = "/tasks/del"
     }
     fun startTodoRequest() {
         val handler = Handler(Looper.getMainLooper())
@@ -70,6 +72,40 @@ class todoRequest(context: Context) {
             Request.Method.POST,
             URL + POST_TODO,
             jsonObject,
+            { response ->
+                todosRequest()
+            },
+            { volleyError ->
+                Log.e("RequestPOSTTaskError", "Connection error. ${volleyError.toString()}")
+            }
+        )
+
+        this.queue.add(jsonArrayRequest);
+    }
+
+    fun updateTodo(todo: Todo) {
+
+        val jsonArrayRequest = JsonObjectRequest(
+            Request.Method.PUT,
+            "${URL}${UPDATE_TODO}/${todo.isDone}/${todo.id}",
+            null,
+            { response ->
+                todosRequest()
+            },
+            { volleyError ->
+                Log.e("RequestPOSTTaskError", "Connection error. ${volleyError.toString()}")
+            }
+        )
+
+        this.queue.add(jsonArrayRequest);
+    }
+
+    fun deleteTodo(todo: Todo) {
+
+        val jsonArrayRequest = JsonObjectRequest(
+            Request.Method.DELETE,
+            "${URL}${DELETE_TODO}/${todo.id}",
+            null,
             { response ->
                 todosRequest()
             },
